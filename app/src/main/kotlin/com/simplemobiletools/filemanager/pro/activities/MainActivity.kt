@@ -24,6 +24,7 @@ import com.simplemobiletools.commons.models.RadioItem
 import com.simplemobiletools.commons.models.Release
 import com.simplemobiletools.filemanager.pro.BuildConfig
 import com.simplemobiletools.filemanager.pro.R
+import com.simplemobiletools.filemanager.pro.SampleActivity
 import com.simplemobiletools.filemanager.pro.dialogs.ChangeSortingDialog
 import com.simplemobiletools.filemanager.pro.dialogs.ChangeViewTypeDialog
 import com.simplemobiletools.filemanager.pro.extensions.config
@@ -167,7 +168,7 @@ class MainActivity : SimpleActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.go_home -> goHome()
-            R.id.camera -> dispatchTakePictureIntent()//
+            R.id.camera -> dispatchTakePictureIntent()
             R.id.go_to_favorite -> goToFavorite()
             R.id.sort -> showSortingDialog()
             R.id.add_favorite -> addFavorite()
@@ -181,6 +182,7 @@ class MainActivity : SimpleActivity() {
             R.id.reduce_column_count -> fragment.reduceColumnCount()
             R.id.settings -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.about -> launchAbout()
+            R.id.about_importance -> launchHelp()//startActivity(Intent(applicationContext, SampleActivity::class.java))
             else -> return super.onOptionsItemSelected(item)
         }
         return true
@@ -374,6 +376,21 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun launchAbout() {
+        val licenses = LICENSE_GLIDE or LICENSE_PATTERN or LICENSE_REPRINT or LICENSE_GESTURE_VIEWS
+
+        val faqItems = arrayListOf(
+            FAQItem(R.string.faq_3_title_commons, R.string.faq_3_text_commons),
+            FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
+            FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
+            FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons),
+            FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons),
+            FAQItem(R.string.faq_10_title_commons, R.string.faq_10_text_commons)
+        )
+
+        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
+    }
+
+    private fun launchHelp() {
         val licenses = LICENSE_GLIDE or LICENSE_PATTERN or LICENSE_REPRINT or LICENSE_GESTURE_VIEWS
 
         val faqItems = arrayListOf(

@@ -76,4 +76,8 @@
         android:id="@+id/about"
         android:title="@string/about"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/about_importance"
+        android:title="Documation"
+        app:showAsAction="ifRoom" />
 </menu>
