@@ -2,7 +2,9 @@ package com.simplemobiletools.filemanager.pro
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.view.Menu
+import android.widget.TextView
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.getAdjustedPrimaryColor
 import com.simplemobiletools.commons.extensions.getFontSizeText
@@ -20,7 +22,7 @@ class SampleActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sample)
-        setupImportance()
+        //setupImportance()
     }
     /*override fun onResume() {
         super.onResume()
@@ -31,7 +33,7 @@ class SampleActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
     }*/
 
-    private fun setupSectionColors() {
+    /*private fun setupSectionColors() {
         val adjustedPrimaryColor = getAdjustedPrimaryColor()
         arrayListOf(visibility_label, file_operations_label, security_label).forEach {
             it.setTextColor(adjustedPrimaryColor)
@@ -52,5 +54,5 @@ class SampleActivity : AppCompatActivity() {
                 settings_font_size.text = getFontSizeText()
             }
         }
-    }
+    }*/
 }

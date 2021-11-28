@@ -10,9 +10,12 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.os.Handler
+import android.provider.AlarmClock.EXTRA_MESSAGE
 import android.provider.MediaStore
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.EditText
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.FileProvider
 import androidx.core.view.MenuItemCompat
@@ -182,12 +185,20 @@ class MainActivity : SimpleActivity() {
             R.id.reduce_column_count -> fragment.reduceColumnCount()
             R.id.settings -> startActivity(Intent(applicationContext, SettingsActivity::class.java))
             R.id.about -> launchAbout()
-            R.id.about_importance -> launchHelp()//startActivity(Intent(applicationContext, SampleActivity::class.java))
+            R.id.about_importance -> startActivity(Intent(applicationContext, SampleActivity::class.java))
             else -> return super.onOptionsItemSelected(item)
         }
         return true
     }
-
+    /** Called when the user taps the Send button */
+    /*fun sendMessage(view: View) {
+        val editText = findViewById<EditText>(R.id.editTextTextPersonName)
+        val message = editText.text.toString()
+        val intent = Intent(this, SampleActivity::class.java).apply {
+            putExtra(EXTRA_MESSAGE, message)
+        }
+        startActivity(intent)
+    }*/
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putString(PICKED_PATH, (fragment_holder as ItemsFragment).currentPath)
@@ -376,21 +387,6 @@ class MainActivity : SimpleActivity() {
     }
 
     private fun launchAbout() {
-        val licenses = LICENSE_GLIDE or LICENSE_PATTERN or LICENSE_REPRINT or LICENSE_GESTURE_VIEWS
-
-        val faqItems = arrayListOf(
-            FAQItem(R.string.faq_3_title_commons, R.string.faq_3_text_commons),
-            FAQItem(R.string.faq_2_title_commons, R.string.faq_2_text_commons),
-            FAQItem(R.string.faq_6_title_commons, R.string.faq_6_text_commons),
-            FAQItem(R.string.faq_7_title_commons, R.string.faq_7_text_commons),
-            FAQItem(R.string.faq_9_title_commons, R.string.faq_9_text_commons),
-            FAQItem(R.string.faq_10_title_commons, R.string.faq_10_text_commons)
-        )
-
-        startAboutActivity(R.string.app_name, licenses, BuildConfig.VERSION_NAME, faqItems, true)
-    }
-
-    private fun launchHelp() {
         val licenses = LICENSE_GLIDE or LICENSE_PATTERN or LICENSE_REPRINT or LICENSE_GESTURE_VIEWS
 
         val faqItems = arrayListOf(

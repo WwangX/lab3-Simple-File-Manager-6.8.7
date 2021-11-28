@@ -21,9 +21,15 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SampleActivity"
-            android:exported="false" />
+            android:parentActivityName=".activities.MainActivity">
+            <!-- The meta-data tag is required if you support API level 15 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
         <activity
             android:name=".activities.SplashActivity"
             android:theme="@style/SplashTheme" />
