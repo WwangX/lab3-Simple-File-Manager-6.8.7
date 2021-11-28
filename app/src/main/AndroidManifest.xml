@@ -10,8 +10,10 @@
     <uses-feature
         android:name="android.hardware.faketouch"
         android:required="false"/>
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
-    <application
+<application
         android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
